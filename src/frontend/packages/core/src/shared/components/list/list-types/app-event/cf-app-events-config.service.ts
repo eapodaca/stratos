@@ -51,5 +51,6 @@ export class CfAppEventsConfigService extends ListConfig<EntityInfo> implements 
   getColumns = () => this.columns;
   getDataSource = () => this.eventSource;
   getMultiFiltersConfigs = () => [];
-
+  getFilters = () => [];
+  setFilter = (id: string) => null;
 }

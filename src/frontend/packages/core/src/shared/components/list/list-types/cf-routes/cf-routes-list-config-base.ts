@@ -202,6 +202,8 @@ export abstract class CfRoutesListConfigBase implements IListConfig<APIResource>
 
   getColumns = () => this.columns;
   getMultiFiltersConfigs = () => [];
+  getFilters = () => [];
+  setFilter = (id: string) => null;
 
   /**
    * Creates an instance of CfRoutesListConfigBase.
