@@ -46,7 +46,9 @@ export interface IListConfig<T> {
    */
   getMultiFiltersConfigs: () => IListMultiFilterConfig[];
   /**
-   * Collection of filters
+   * Collection of filter definitions to support filtering across multiple fields in a list.
+   * When the filter is selected in a dropdown the filterString filters results using the chosen field.
+   * Combined with a transformEntities DataFunction that consumes the filterKey.
    */
   getFilters: () => IListFilter[];
   /**
