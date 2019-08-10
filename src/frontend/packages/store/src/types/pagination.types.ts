@@ -22,6 +22,7 @@ export interface PaginationClientFilter {
   items: {
     [key: string]: any;
   };
+  filterKey?: string;
 }
 
 export interface PaginationClientPagination {

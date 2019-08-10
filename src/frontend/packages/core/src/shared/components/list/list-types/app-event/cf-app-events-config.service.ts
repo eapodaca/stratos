@@ -52,5 +52,4 @@ export class CfAppEventsConfigService extends ListConfig<EntityInfo> implements 
   getDataSource = () => this.eventSource;
   getMultiFiltersConfigs = () => [];
   getFilters = () => [];
-  setFilter = (id: string) => null;
 }
