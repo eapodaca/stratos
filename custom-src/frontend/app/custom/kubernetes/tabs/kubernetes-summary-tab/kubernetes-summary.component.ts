@@ -60,6 +60,7 @@ export class KubernetesSummaryTabComponent implements OnInit, OnDestroy {
   source: SafeResourceUrl;
 
   dashboardLink: string;
+  argoDashboardLink: string;
   public podCapacity$: Observable<ISimpleUsageChartData>;
   public diskPressure$: Observable<ISimpleUsageChartData>;
   public memoryPressure$: Observable<ISimpleUsageChartData>;
@@ -240,6 +241,7 @@ export class KubernetesSummaryTabComponent implements OnInit, OnDestroy {
       warningText: `Nodes with unknown ready status found`
     });
     this.dashboardLink = `/kubernetes/${guid}/dashboard`;
+    this.argoDashboardLink = `/kubernetes/${guid}/argoDashboard`;
 
     this.kubeNodeVersions$ = this.getNodeKubeVersions(nodes$).pipe(startWith('-'));
 

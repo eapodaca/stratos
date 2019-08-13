@@ -155,6 +155,22 @@ const kubernetes: Routes = [{
       }
     }
   ]
+},
+{
+  path: ':endpointId/argoDashboard',
+  component: KubernetesDashboardTabComponent,
+  data: {
+    uiNoMargin: true
+  },
+  children: [
+    {
+      path: '**',
+      component: KubernetesDashboardTabComponent,
+      data: {
+        uiNoMargin: true
+      }
+    }
+  ]
 }
 ];
 
