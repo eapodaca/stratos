@@ -27,6 +27,8 @@ import { KubernetesNodesTabComponent } from './tabs/kubernetes-nodes-tab/kuberne
 import { KubernetesPodsTabComponent } from './tabs/kubernetes-pods-tab/kubernetes-pods-tab.component';
 import { KubernetesSummaryTabComponent } from './tabs/kubernetes-summary-tab/kubernetes-summary.component';
 
+import { ArgoDashboardTabComponent } from './argo-dashboard/argo-dashboard.component';
+
 const kubernetes: Routes = [{
   path: '',
   component: KubernetesComponent
@@ -158,14 +160,14 @@ const kubernetes: Routes = [{
 },
 {
   path: ':endpointId/argoDashboard',
-  component: KubernetesDashboardTabComponent,
+  component: ArgoDashboardTabComponent,
   data: {
     uiNoMargin: true
   },
   children: [
     {
       path: '**',
-      component: KubernetesDashboardTabComponent,
+      component: ArgoDashboardTabComponent,
       data: {
         uiNoMargin: true
       }

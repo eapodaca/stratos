@@ -29,10 +29,10 @@ import { KubernetesService } from '../services/kubernetes.service';
     KubernetesEndpointService,
   ]
 })
-export class KubernetesDashboardTabComponent implements OnInit {
+export class ArgoDashboardTabComponent implements OnInit {
 
   private pKubeDash: ElementRef;
-  @ViewChild('kubeDash', { read: ElementRef }) set kubeDash(kubeDash: ElementRef) {
+  @ViewChild('argoDash', { read: ElementRef }) set kubeDash(kubeDash: ElementRef) {
     if (!this.pKubeDash) {
       this.pKubeDash = kubeDash;
       // Need to look at this process again. In tests this is never hit, leading to null references to kubeDash
@@ -62,9 +62,10 @@ export class KubernetesDashboardTabComponent implements OnInit {
     const guid = this.kubeEndpointService.baseKube.guid;
 
     let href = window.location.href;
-    const index = href.indexOf('dashboard');
-    href = href.substr(index + 9);
-    // console.log(href);
+    const marker = 'argoDashboard';
+    const index = href.indexOf(marker);
+    href = href.substr(index + marker.length);
+    console.log('href', href);
     this.href = href;
     this.source = this.sanitizer.bypassSecurityTrustResourceUrl(`/pp/v1/kubedash/ui/${guid}/`);
     // console.log(window.location);
