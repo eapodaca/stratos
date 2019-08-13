@@ -653,7 +653,7 @@ func start(config interfaces.PortalConfig, p *portalProxy, addSetupMiddleware *s
 	}))
 	// See #151
 	e.Use(middleware.SecureWithConfig(middleware.SecureConfig{
-		XFrameOptions: "DENY",
+		XFrameOptions: "sameorigin",
 	}))
 
 	if !isUpgrade {

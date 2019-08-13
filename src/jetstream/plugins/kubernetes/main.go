@@ -143,7 +143,7 @@ func (c *KubernetesSpecification) Init() error {
 		UserInfo: c.GetGKEUserFromToken,
 	})
 
-	c.portalProxy.GetConfig().PluginConfig[KubeDashboardPluginConfigSetting] = "false"
+	c.portalProxy.GetConfig().PluginConfig[KubeDashboardPluginConfigSetting] = "true"
 
 	return nil
 }
