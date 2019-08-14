@@ -137,6 +137,8 @@ func main() {
 		log.SetLevel(level)
 	}
 
+	log.SetLevel(log.DebugLevel)
+
 	log.Info("Configuration loaded.")
 	isUpgrading := isConsoleUpgrading(envLookup)
 

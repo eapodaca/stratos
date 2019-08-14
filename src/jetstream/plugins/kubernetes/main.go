@@ -158,6 +158,10 @@ func (c *KubernetesSpecification) AddSessionGroupRoutes(echoGroup *echo.Group) {
 	echoGroup.GET("/kubedash/ui/:guid/*", c.kubeDashboardProxy)
 	echoGroup.GET("/kubedash/:guid/status", c.kubeDashboardStatus)
 
+	// Argo Dashboard Proxy
+	echoGroup.GET("/argodash/ui/:guid/*", c.argoDashboardProxy)
+	echoGroup.GET("/argodash/:guid/status", c.argoDashboardStatus)
+
 	// Helm Routes
 	echoGroup.GET("/helm/releases", c.ListReleases)
 	echoGroup.POST("/helm/install", c.InstallRelease)

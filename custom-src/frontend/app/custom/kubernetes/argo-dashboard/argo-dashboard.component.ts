@@ -65,9 +65,9 @@ export class ArgoDashboardTabComponent implements OnInit {
     const marker = 'argoDashboard';
     const index = href.indexOf(marker);
     href = href.substr(index + marker.length);
-    console.log('href', href);
+    // console.log('href', href);
     this.href = href;
-    this.source = this.sanitizer.bypassSecurityTrustResourceUrl(`/pp/v1/kubedash/ui/${guid}/`);
+    this.source = this.sanitizer.bypassSecurityTrustResourceUrl(`/pp/v1/argodash/ui/${guid}/`);
     // console.log(window.location);
 
     this.breadcrumbs$ = this.kubeEndpointService.endpoint$.pipe(
@@ -81,10 +81,9 @@ export class ArgoDashboardTabComponent implements OnInit {
   }
 
   iframeLoaded() {
-    const kdToolbar = this.getKubeDashToolbar();
+    const kdToolbar = this.getArgoDashReady();
     if (!!kdToolbar) {
       this.isLoading$.next(false);
-      this.toggle(false);
     }
     this.hasIframeLoaded = true;
     this.setupEventListener();
@@ -119,38 +118,21 @@ export class ArgoDashboardTabComponent implements OnInit {
         h2 = h2.replace('%3D', '=');
         // console.log(h2);
         h2 = '#!' + h2;
-        // console.log('Changing location hash');
+        console.log('Changing location hash');
         iframeWindow.location.hash = h2;
         this.href = '';
       }
     });
   }
 
-  toggle(val: boolean) {
-    if (val !== undefined) {
-      this.expanded = val;
-    } else {
-      this.expanded = !this.expanded;
-    }
-
-    const height = this.expanded ? '48px' : '0px';
-    const kdToolbar = this.getKubeDashToolbar();
-    if (!!kdToolbar) {
-      this.renderer.setStyle(kdToolbar, 'height', height);
-      this.renderer.setStyle(kdToolbar, 'minHeight', height);
-    }
-  }
-
-  private getKubeDashToolbar() {
+  private getArgoDashReady() {
     if (this.kubeDash &&
       this.kubeDash.nativeElement &&
       this.kubeDash.nativeElement.contentDocument &&
       this.kubeDash.nativeElement.contentDocument.getElementsByTagName) {
-      const kdChrome = this.kubeDash.nativeElement.contentDocument.getElementsByTagName('kd-chrome')[0];
-      if (kdChrome) {
-        const kdToolbar = kdChrome.getElementsByTagName('md-toolbar')[0];
-        return kdToolbar;
-      }
+
+      const bodyElements = this.kubeDash.nativeElement.contentDocument.getElementsByTagName('body');
+      return (bodyElements.length > 0 && bodyElements[0].hasChildNodes());
     }
     return null;
   }
