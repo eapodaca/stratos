@@ -16,6 +16,7 @@ import {
 import { HelmReleaseSummaryComponent } from './helm-release/helm-release-summary/helm-release-summary.component';
 import { HelmReleaseComponent } from './helm-release/helm-release.component';
 import { KubernetesDashboardTabComponent } from './kubernetes-dashboard/kubernetes-dashboard.component';
+import { ArgoDashboardTabComponent } from './argo-dashboard/argo-dashboard.component';
 import {
   KubernetesNamespacePodsComponent,
 } from './kubernetes-namespace/kubernetes-namespace-pods/kubernetes-namespace-pods.component';
@@ -111,6 +112,7 @@ import { KubernetesSummaryTabComponent } from './tabs/kubernetes-summary-tab/kub
     KubernetesPodTagsComponent,
     KubernetesNamespacesTabComponent,
     KubernetesDashboardTabComponent,
+    ArgoDashboardTabComponent,
     KubernetesSummaryTabComponent,
     KubernetesAppsTabComponent,
     HelmReleaseComponent,

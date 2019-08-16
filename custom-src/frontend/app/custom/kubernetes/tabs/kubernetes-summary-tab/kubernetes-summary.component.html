@@ -4,6 +4,10 @@
       <mat-icon>dashboard</mat-icon>
       <span class="kube-details__button">View Dashboard</span>
     </button>
+    <button *ngIf="kubeEndpointService.kubeDashboardEnabled$ | async" [routerLink]="argoDashboardLink" mat-button>
+      <mat-icon>dashboard</mat-icon>
+      <span class="kube-details__button">View Argo Dashboard</span>
+    </button>
   </app-page-sub-nav>
 
   <app-loading-page [isLoading]="isLoading$" [text]="'Retrieving Kubernetes details'">

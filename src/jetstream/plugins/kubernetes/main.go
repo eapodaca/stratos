@@ -143,7 +143,7 @@ func (c *KubernetesSpecification) Init() error {
 		UserInfo: c.GetGKEUserFromToken,
 	})
 
-	c.portalProxy.GetConfig().PluginConfig[KubeDashboardPluginConfigSetting] = "false"
+	c.portalProxy.GetConfig().PluginConfig[KubeDashboardPluginConfigSetting] = "true"
 
 	return nil
 }
@@ -157,6 +157,10 @@ func (c *KubernetesSpecification) AddSessionGroupRoutes(echoGroup *echo.Group) {
 	// Kubernetes Dashboard Proxy
 	echoGroup.GET("/kubedash/ui/:guid/*", c.kubeDashboardProxy)
 	echoGroup.GET("/kubedash/:guid/status", c.kubeDashboardStatus)
+
+	// Argo Dashboard Proxy
+	echoGroup.GET("/argodash/ui/:guid/*", c.argoDashboardProxy)
+	echoGroup.GET("/argodash/:guid/status", c.argoDashboardStatus)
 
 	// Helm Routes
 	echoGroup.GET("/helm/releases", c.ListReleases)
